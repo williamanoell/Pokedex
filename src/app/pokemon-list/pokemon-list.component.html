@@ -1,0 +1,60 @@
+<div style="user-select: none;">
+    <div class="content">
+        <div class="search-container">
+            <input type="text" placeholder="Buscar Pokémon..." [(ngModel)]="searchTerm" (input)="onSearch()" />
+            <i class="search-icon"></i>
+
+            <button class="filter-button" (click)="toggleFilterMenu()">
+                <i class="filter-icon"></i>
+            </button>
+        </div>
+    </div>
+    <div *ngIf="showFilters" class="row rowFilters">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 filters">
+            <label>Tipo</label>
+            <select [(ngModel)]="selectedType" (change)="onSearch()">
+                <option value="">Todos os Tipos</option>
+                <option *ngFor="let type of pokemonTypes" [value]="type">{{ type }}</option>
+            </select>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 filters habitatSelect">
+            <label>Habitat</label>
+            <select [(ngModel)]="selectedHabitat" (change)="onSearch()">
+                <option value="">Todos os Habitats</option>
+                <option *ngFor="let habitat of pokemonHabitats" [value]="habitat">{{ habitat }}</option>
+            </select>
+        </div>
+    </div>
+
+    <h2 style="margin-left: 25px;">Pokémons</h2>
+
+    <div *ngIf="isLoading" class="loading-container">
+        <i class="fas fa-spinner fa-spin"></i>
+    </div>
+    <div *ngIf="!isLoading" class="pokemon-container">
+        <div class="row rowCards">
+            <div *ngFor="let pokemon of paginatedPokemons" class="pokemon-card col-12 col-sm-6 col-md-4 col-lg-3"
+                (click)="selectPokemon(pokemon)">
+                <img [src]=" pokemon.sprites.front_default" alt="{{ pokemon.name }}" />
+                <h3>{{ pokemon.name }}</h3>
+                <p>Tipos:
+                    <span *ngFor="let type of pokemon.types; let i = index">
+                        {{ type.type.name }}<span *ngIf="i < pokemon.types.length - 1">, </span>
+                    </span>
+                </p>
+                <p>Habitat: {{ pokemon.habitat }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="pagination">
+        <button [ngClass]="{'paginaAnterior': page != 1, 'blockButton': page == 1}" (click)="changePage(page - 1)"
+            [disabled]="page === 1">Anterior</button>
+        <div class="text">
+            <span>Página {{ totalPages > 0 ? page : 0}} de {{ totalPages }}</span>
+        </div>
+        <button [ngClass]="{'proximaPagina': page != totalPages, 'blockButton': page == totalPages}"
+            (click)="changePage(page + 1)" [disabled]="page === totalPages" [ngStyle]="">Próximo</button>
+    </div>
+</div>

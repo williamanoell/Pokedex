@@ -1,0 +1,180 @@
+.content {
+    display: flex;
+    justify-content: flex-end;
+    margin: 16px
+}
+
+.search-container {
+    position: relative;
+    display: flex;
+}
+
+.search-container input[type="text"] {
+    padding: 10px 10px 10px 35px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+}
+
+.search-icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    font-family: 'Material Icons';
+    font-size: 18px;
+    color: #888;
+}
+
+.search-icon::before {
+    content: "\e8b6";
+    font-family: 'Material Icons';
+}
+
+.filter-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 46px;
+    height: 46px;
+    margin-left: 5px;
+}
+
+.filter-icon {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+    font-family: 'Material Icons';
+    font-size: 20px;
+}
+
+.filter-icon::before {
+    content: "\e152";
+    font-family: 'Material Icons';
+}
+
+.rowFilters {
+    margin: 10px !important;
+    justify-content: space-around;
+}
+
+.filters {
+    display: grid;
+}
+
+select {
+    width: 50%;
+    height: 30px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 200px;
+    /* Ajuste conforme necessário */
+    font-size: 1.5em;
+    color: #555;
+}
+
+.loading-container i {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: #007bff;
+}
+
+.pokemon-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.rowCards {
+    justify-content: center;
+    margin: 10px !important;
+    width: 100%;
+}
+
+.pokemon-card {
+    margin: 10px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    transition: transform 0.2s;
+    cursor: pointer;
+    background-color: #f9f9f9;
+}
+
+.pokemon-card:hover {
+    transform: scale(1.05);
+}
+
+img {
+    width: 100px;
+    height: 100px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.text {
+    padding: 20px;
+}
+
+.paginaAnterior {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.blockButton {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: block;
+    opacity: 0.6;
+}
+
+.proximaPagina {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+@media (max-width: 575px) {
+    .habitatSelect {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 700px) {
+    select {
+        width: 100%;
+    }
+}
+
+@media (min-width: 700px) and (max-width: 1000px) {
+    select {
+        width: 70%;
+    }
+}
