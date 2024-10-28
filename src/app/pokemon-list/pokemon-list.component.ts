@@ -34,12 +34,6 @@ export class PokemonListComponent implements OnInit {
 
   toggleFilterMenu() {
     this.showFilters = !this.showFilters;
-    this.filteredPokemons = [];
-    this.selectedType = '';
-    this.selectedHabitat = '';
-
-    if (this.showFilters == false)
-      this.loadPokemons();
   }
 
   loadPokemons(): void {
