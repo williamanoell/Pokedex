@@ -1,0 +1,30 @@
+mat-dialog-content {
+    font-size: 16px;
+    max-height: 500px;
+    /* Limitar altura para rolagem */
+    overflow-y: auto;
+    /* Adicionar rolagem se necessário */
+    width: 400px;
+    user-select: none;
+}
+
+mat-dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    /* Alinhar botões à direita */
+}
+
+button {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none !important;
+    border-radius: 4px;
+    cursor: pointer;
+    user-select: none;
+}
+
+img {
+    width: 120px;
+    height: 120px;
+}

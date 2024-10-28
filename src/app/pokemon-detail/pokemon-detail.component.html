@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>{{ data.pokemon.name | titlecase }}</h2>
+<mat-dialog-content>
+    <img [src]="data.pokemon.sprites.front_default" alt="{{ data.pokemon.name }}" />
+    <p>Tipos: {{ data.types }}</p>
+    <p>Habitat: {{ data.pokemon.habitat }}</p>
+
+    <h3>Estatísticas:</h3>
+    <ul>
+        <li *ngFor="let stat of data.stats">{{ stat.name | titlecase }}: {{ stat.baseStat }}</li>
+    </ul>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button (click)="closeModal()">Fechar</button>
+</mat-dialog-actions>
