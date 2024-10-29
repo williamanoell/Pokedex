@@ -1,9 +1,11 @@
+::ng-deep .mat-mdc-dialog-surface {
+    overflow-y: unset !important;
+}
+
 mat-dialog-content {
     font-size: 16px;
     max-height: 500px;
-    /* Limitar altura para rolagem */
     overflow-y: auto;
-    /* Adicionar rolagem se necessário */
     width: 400px;
     user-select: none;
 }
@@ -11,7 +13,6 @@ mat-dialog-content {
 mat-dialog-actions {
     display: flex;
     justify-content: flex-end;
-    /* Alinhar botões à direita */
 }
 
 button {
