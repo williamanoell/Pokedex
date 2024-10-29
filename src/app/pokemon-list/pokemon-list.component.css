@@ -78,8 +78,7 @@ select {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 200px;
-    /* Ajuste conforme necessário */
+    height: 60vh;
     font-size: 1.5em;
     color: #555;
 }
