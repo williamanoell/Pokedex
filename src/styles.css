@@ -13,3 +13,7 @@ body {
 .mat-mdc-dialog-surface {
     overflow-y: unset !important;
 }
+
+.loading-container {
+    min-height: 60vh !important;
+}
