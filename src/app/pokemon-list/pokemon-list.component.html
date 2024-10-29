@@ -29,10 +29,10 @@
 
     <h2 style="margin-left: 25px;">Pokémons</h2>
 
-    <div *ngIf="isLoading" class="loading-container">
+    <div [hidden]="!isLoading" class="loading-container">
         <i class="fas fa-spinner fa-spin"></i>
     </div>
-    <div *ngIf="!isLoading" class="pokemon-container">
+    <div [hidden]="isLoading" class="pokemon-container">
         <div class="row rowCards">
             <div *ngFor="let pokemon of paginatedPokemons" class="pokemon-card col-12 col-sm-6 col-md-4 col-lg-3"
                 (click)="selectPokemon(pokemon)">
