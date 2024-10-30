@@ -73,6 +73,10 @@ select {
     border-radius: 5px;
 }
 
+h2 {
+    margin-left: 25px;
+}
+
 .loading-container {
     display: flex;
     justify-content: center;
