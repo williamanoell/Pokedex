@@ -10,11 +10,11 @@
     </p>
     <p>Habitat: {{ data.habitat | titlecase }}</p>
 
-    <h3>Stats:</h3>
+    <h3>Estatísticas:</h3>
     <ul>
-        <li *ngFor="let stat of data.stats">{{ stat.name | titlecase }}: {{ stat.baseStat }}</li>
+        <li *ngFor="let stat of data.stats">{{ stat.name }}: {{ stat.baseStat }}</li>
     </ul>
 </mat-dialog-content>
 <mat-dialog-actions>
-    <button mat-button (click)="closeModal()">Close</button>
+    <button mat-button (click)="closeModal()">Fechar</button>
 </mat-dialog-actions>

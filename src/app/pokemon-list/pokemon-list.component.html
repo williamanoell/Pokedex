@@ -1,7 +1,7 @@
 <div style="user-select: none;">
     <div class="content">
         <div class="search-container">
-            <input type="text" placeholder="Search Pokémon..." [(ngModel)]="searchTerm" (input)="onSearch()" />
+            <input type="text" placeholder="Buscar Pokémon..." [(ngModel)]="searchTerm" (input)="onSearch()" />
             <i class="search-icon"></i>
 
             <button class="filter-button" (click)="toggleFilterMenu()">
@@ -11,24 +11,25 @@
     </div>
     <div *ngIf="showFilters" class="row rowFilters">
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 filters">
-            <label>Type</label>
+            <label>Tipo</label>
             <select [(ngModel)]="selectedType" (change)="onSearch()">
-                <option value="">All Types</option>
-                <option *ngFor="let type of (pokemonTypes | keyvalue)" [value]="type.key">{{ type.key }}</option>
+                <option value="">Todos Tipos</option>
+                <option *ngFor="let type of (pokemonTypes | keyvalue)" [value]="type.key">
+                    {{ getTypeTranslation(type.key) }}
+                </option>
             </select>
         </div>
 
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 filters habitatSelect">
             <label>Habitat</label>
             <select [(ngModel)]="selectedHabitat" (change)="onSearch()">
-                <option value="">All Habitats</option>
-                <option *ngFor="let habitat of pokemonHabitats" [value]="habitat">{{ habitat }}</option>
+                <option value="">Todos Habitats</option>
+                <option *ngFor="let habitat of pokemonHabitats" [value]="habitat">{{ getHabitatTranslation(habitat) }}
+                </option>
             </select>
         </div>
     </div>
 
-
-    <!-- <h2>Pokémons</h2> -->
     <div class="rowTitle">
         <img src="../../assets/images/pokedex.png" class="title" />
     </div>
@@ -46,12 +47,12 @@
                     <span *ngFor="let type of pokemon.types; let i = index" class="type-label"
                         [ngStyle]="{ 'background-color': pokemonTypes[type.type.name] || '#FFF' }">
                         <img [src]="getTypeIcon(type.type.name)" class="type-icon" />
-                        {{ type.type.name | titlecase }}
+                        {{ getTypeTranslation(type.type.name) }}
                         <span *ngIf="i < pokemon.types.length - 1"> </span>
                     </span>
                 </p>
                 <p>
-                    Habitat: {{ pokemon.habitat | titlecase}}
+                    Habitat: {{ getHabitatTranslation(pokemon.habitat) }}
                 </p>
             </div>
         </div>
@@ -59,11 +60,11 @@
 
     <div class="pagination">
         <button [ngClass]="{'paginaAnterior': page != 1, 'blockButton': page == 1}" (click)="changePage(page - 1)"
-            [disabled]="page === 1">Previous</button>
+            [disabled]="page === 1">Anterior</button>
         <div class="text">
-            <span>Page {{ totalPages > 0 ? page : 0}} of {{ totalPages }}</span>
+            <span>Página {{ totalPages > 0 ? page : 0}} de {{ totalPages }}</span>
         </div>
         <button [ngClass]="{'proximaPagina': page != totalPages, 'blockButton': page == totalPages}"
-            (click)="changePage(page + 1)" [disabled]="page === totalPages">Next</button>
+            (click)="changePage(page + 1)" [disabled]="page === totalPages">Próxima</button>
     </div>
 </div>

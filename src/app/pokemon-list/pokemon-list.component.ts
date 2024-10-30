@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { TranslateService } from '@ngx-translate/core';
 import { PokemonDetailComponent } from '../pokemon-detail/pokemon-detail.component';
 import { PokemonService } from './pokemon.service';
 
@@ -12,7 +13,7 @@ export class PokemonListComponent implements OnInit {
   pokemons: any[] = [];
   filteredPokemons: any[] = [];
   paginatedPokemons: any[] = [];
-  pokemonTypes: { [key: string]: string } = {}; // Mapeamento de tipos para cores
+  pokemonTypes: { [key: string]: string } = {};
   pokemonHabitats: string[] = [];
   searchTerm: string = '';
   selectedType: string = '';
@@ -44,10 +45,16 @@ export class PokemonListComponent implements OnInit {
     fairy: '#EE99AC',
   };
 
-  constructor(private pokemonService: PokemonService, private dialog: MatDialog) { }
+  constructor(
+    private pokemonService: PokemonService,
+    private dialog: MatDialog,
+    private translate: TranslateService) {
+    this.translate.setDefaultLang('pt');
+  }
 
   ngOnInit(): void {
     this.loadPokemons();
+    this.translate.use('pt');
   }
 
   toggleFilterMenu() {
@@ -58,7 +65,7 @@ export class PokemonListComponent implements OnInit {
     this.isLoading = true;
     this.pokemonService.getPokemons().subscribe((pokemons) => {
       this.pokemons = pokemons;
-      this.pokemonTypes = this.getAllTypes(pokemons); // Chama o método para obter tipos e cores
+      this.pokemonTypes = this.getAllTypes(pokemons);
       this.getAllHabitats();
       this.applyFilters();
       this.isLoading = false;
@@ -74,7 +81,7 @@ export class PokemonListComponent implements OnInit {
     );
 
     return types.reduce((acc: any, type: any) => {
-      acc[type.name] = type.color; // Mapeia tipo para a cor
+      acc[type.name] = type.color;
       return acc;
     }, {});
   }
@@ -83,14 +90,30 @@ export class PokemonListComponent implements OnInit {
     return `https://pokedex-ib.vercel.app/images/types-icons/${type}.svg`;
   }
 
+  getTypeTranslation(type: string): string {
+    var translatedTypes = '';
+    this.translate.get(`types.${type}`).subscribe((translation) => {
+      translatedTypes = translation;
+    });
+    return translatedTypes || type;
+  }
+
   getAllHabitats(): void {
     this.pokemonService.getPokemonHabitats().subscribe((habitats) => {
       this.pokemonHabitats = habitats;
     });
   }
 
+  getHabitatTranslation(habitat: string): string {
+    var translatedHabitats = '';
+    this.translate.get(`habitats.${habitat}`).subscribe((translation) => {
+      translatedHabitats = translation;
+    });
+    return translatedHabitats || habitat;
+  }
+
   onSearch(): void {
-    this.page = 1; // Reinicia para a primeira página ao buscar
+    this.page = 1;
     this.applyFilters();
   }
 
@@ -133,13 +156,22 @@ export class PokemonListComponent implements OnInit {
     }
   }
 
+  translateStat(statName: string): string {
+    var translatedStat = '';
+    this.translate.get(`stats.${statName}`).subscribe((res: string) => {
+      translatedStat = res;
+    });
+    return translatedStat;
+  }
+
+
   selectPokemon(pokemon: any): void {
     const types = pokemon.types.map((type: any) => type.type.name);
     const habitat = pokemon.habitat || 'desconhecido';
     console.log("=>", pokemon)
 
     const stats = pokemon.stats.map((stat: any) => ({
-      name: stat.stat.name,
+      name: this.translateStat(stat.stat.name),
       baseStat: stat.base_stat
     }));
 
