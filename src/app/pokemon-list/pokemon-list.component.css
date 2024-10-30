@@ -58,7 +58,7 @@
 }
 
 .rowFilters {
-    margin: 10px !important;
+    margin: 25px !important;
     justify-content: space-around;
 }
 
@@ -73,8 +73,15 @@ select {
     border-radius: 5px;
 }
 
-h2 {
-    margin-left: 25px;
+.rowTitle {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.title {
+    width: 250px;
+    height: 80px;
 }
 
 .loading-container {
@@ -118,7 +125,6 @@ h2 {
 .pokemon-card:hover {
     transform: scale(1.05);
 }
-
 
 .type-label {
     display: inline-flex;
