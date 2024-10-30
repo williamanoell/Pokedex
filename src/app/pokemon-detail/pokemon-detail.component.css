@@ -25,3 +25,21 @@ img {
     width: 120px;
     height: 120px;
 }
+
+.type-label {
+    display: inline-flex;
+    align-items: center;
+    color: #333 !important;
+    padding: 4px 8px;
+    border-radius: 8px;
+    margin: 4px;
+    font-size: 14px;
+}
+
+.type-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 2px;
+    filter: brightness(0) invert(0);
+    vertical-align: middle;
+}

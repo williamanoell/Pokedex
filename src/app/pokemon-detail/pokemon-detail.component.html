@@ -1,14 +1,20 @@
 <h2 mat-dialog-title>{{ data.pokemon.name | titlecase }}</h2>
 <mat-dialog-content>
     <img [src]="data.pokemon.sprites.front_default" alt="{{ data.pokemon.name }}" />
-    <p>Tipos: {{ data.types }}</p>
-    <p>Habitat: {{ data.pokemon.habitat }}</p>
+    <p>
+        <span *ngFor="let type of data.types" class="type-label"
+            [ngStyle]="{'background-color': getTypeColor(type), 'color': '#fff'}">
+            <img [src]="getTypeIcon(type)" alt="{{ type }}" class="type-icon" />
+            {{ type | titlecase}}
+        </span>
+    </p>
+    <p>Habitat: {{ data.habitat | titlecase }}</p>
 
-    <h3>Estatísticas:</h3>
+    <h3>Stats:</h3>
     <ul>
         <li *ngFor="let stat of data.stats">{{ stat.name | titlecase }}: {{ stat.baseStat }}</li>
     </ul>
 </mat-dialog-content>
 <mat-dialog-actions>
-    <button mat-button (click)="closeModal()">Fechar</button>
+    <button mat-button (click)="closeModal()">Close</button>
 </mat-dialog-actions>

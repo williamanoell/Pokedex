@@ -113,11 +113,35 @@ h2 {
     padding: 10px;
     transition: transform 0.2s;
     cursor: pointer;
-    background-color: #f9f9f9;
 }
 
 .pokemon-card:hover {
     transform: scale(1.05);
+}
+
+
+.type-label {
+    display: inline-flex;
+    align-items: center;
+    color: #333 !important;
+    padding: 4px 8px;
+    border-radius: 8px;
+    margin: 4px;
+    font-size: 14px;
+}
+
+.type-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 2px;
+    filter: brightness(0) invert(0);
+    vertical-align: middle;
+}
+
+.habitat-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
 }
 
 img {

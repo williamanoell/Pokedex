@@ -1,7 +1,7 @@
 <div style="user-select: none;">
     <div class="content">
         <div class="search-container">
-            <input type="text" placeholder="Buscar Pokémon..." [(ngModel)]="searchTerm" (input)="onSearch()" />
+            <input type="text" placeholder="Search Pokémon..." [(ngModel)]="searchTerm" (input)="onSearch()" />
             <i class="search-icon"></i>
 
             <button class="filter-button" (click)="toggleFilterMenu()">
@@ -11,17 +11,17 @@
     </div>
     <div *ngIf="showFilters" class="row rowFilters">
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 filters">
-            <label>Tipo</label>
+            <label>Type</label>
             <select [(ngModel)]="selectedType" (change)="onSearch()">
-                <option value="">Todos os Tipos</option>
-                <option *ngFor="let type of pokemonTypes" [value]="type">{{ type }}</option>
+                <option value="">All Types</option>
+                <option *ngFor="let type of (pokemonTypes | keyvalue)" [value]="type.key">{{ type.key }}</option>
             </select>
         </div>
 
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 filters habitatSelect">
             <label>Habitat</label>
             <select [(ngModel)]="selectedHabitat" (change)="onSearch()">
-                <option value="">Todos os Habitats</option>
+                <option value="">All Habitats</option>
                 <option *ngFor="let habitat of pokemonHabitats" [value]="habitat">{{ habitat }}</option>
             </select>
         </div>
@@ -32,18 +32,23 @@
     <div *ngIf="isLoading" class="loading-container">
         <i class="fas fa-spinner fa-spin"></i>
     </div>
-    <div *ngIf="!isLoading" class="pokemon-container" [ngStyle]="{'min-height': showFilters ? '40vh' : '60vh'}">
+    <div *ngIf="!isLoading" class="pokemon-container" [ngStyle]="{'min-height': showFilters ? '40vh' : '50vh'}">
         <div class="row rowCards">
             <div *ngFor="let pokemon of paginatedPokemons" class="pokemon-card col-12 col-sm-6 col-md-4 col-lg-3"
                 (click)="selectPokemon(pokemon)">
-                <img [src]=" pokemon.sprites.front_default" alt="{{ pokemon.name }}" />
+                <img [src]="pokemon.sprites.front_default" alt="{{ pokemon.name }}" />
                 <h3>{{ pokemon.name }}</h3>
-                <p>Tipos:
-                    <span *ngFor="let type of pokemon.types; let i = index">
-                        {{ type.type.name }}<span *ngIf="i < pokemon.types.length - 1">, </span>
+                <p>
+                    <span *ngFor="let type of pokemon.types; let i = index" class="type-label"
+                        [ngStyle]="{ 'background-color': pokemonTypes[type.type.name] || '#FFF' }">
+                        <img [src]="getTypeIcon(type.type.name)" class="type-icon" />
+                        {{ type.type.name | titlecase }}
+                        <span *ngIf="i < pokemon.types.length - 1"> </span>
                     </span>
                 </p>
-                <p>Habitat: {{ pokemon.habitat }}</p>
+                <p>
+                    Habitat: {{ pokemon.habitat | titlecase}}
+                </p>
             </div>
         </div>
     </div>

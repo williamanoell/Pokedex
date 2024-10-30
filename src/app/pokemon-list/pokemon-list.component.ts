@@ -12,7 +12,7 @@ export class PokemonListComponent implements OnInit {
   pokemons: any[] = [];
   filteredPokemons: any[] = [];
   paginatedPokemons: any[] = [];
-  pokemonTypes: string[] = [];
+  pokemonTypes: { [key: string]: string } = {}; // Mapeamento de tipos para cores
   pokemonHabitats: string[] = [];
   searchTerm: string = '';
   selectedType: string = '';
@@ -24,9 +24,27 @@ export class PokemonListComponent implements OnInit {
   showFilters = false;
   isLoading = false;
 
-  constructor(private pokemonService: PokemonService,
-    private dialog: MatDialog) { }
+  private typeColors: { [key: string]: string } = {
+    fire: '#F08030',
+    water: '#6890F0',
+    grass: '#78C850',
+    electric: '#F8D030',
+    ice: '#98D8D8',
+    fighting: '#C03028',
+    poison: '#A040A0',
+    ground: '#E0C068',
+    flying: '#A890F0',
+    psychic: '#F85888',
+    bug: '#A8B820',
+    rock: '#B8A038',
+    ghost: '#705898',
+    dragon: '#7038F8',
+    dark: '#705848',
+    steel: '#B8B8D0',
+    fairy: '#EE99AC',
+  };
 
+  constructor(private pokemonService: PokemonService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.loadPokemons();
@@ -40,19 +58,32 @@ export class PokemonListComponent implements OnInit {
     this.isLoading = true;
     this.pokemonService.getPokemons().subscribe((pokemons) => {
       this.pokemons = pokemons;
-      this.pokemonTypes = this.getAllTypes(pokemons);
-      this.getAllTHabitats();
+      this.pokemonTypes = this.getAllTypes(pokemons); // Chama o método para obter tipos e cores
+      this.getAllHabitats();
       this.applyFilters();
       this.isLoading = false;
-    })
+    });
   }
 
-  getAllTypes(pokemons: any[]): string[] {
-    const types = pokemons.flatMap(pokemon => pokemon.types.map((type: any) => type.type.name));
-    return Array.from(new Set(types)); // Remove duplicatas
+  getAllTypes(pokemons: any[]): { [key: string]: string } {
+    const types = pokemons.flatMap(pokemon =>
+      pokemon.types.map((type: any) => ({
+        name: type.type.name,
+        color: this.typeColors[type.type.name] || '#c9c7c7',
+      }))
+    );
+
+    return types.reduce((acc: any, type: any) => {
+      acc[type.name] = type.color; // Mapeia tipo para a cor
+      return acc;
+    }, {});
   }
 
-  getAllTHabitats(): any {
+  getTypeIcon(type: string): string {
+    return `https://pokedex-ib.vercel.app/images/types-icons/${type}.svg`;
+  }
+
+  getAllHabitats(): void {
     this.pokemonService.getPokemonHabitats().subscribe((habitats) => {
       this.pokemonHabitats = habitats;
     });
@@ -79,9 +110,9 @@ export class PokemonListComponent implements OnInit {
     }
 
     if (this.selectedHabitat) {
-      filtered = filtered.filter(pokemon => {
-        return pokemon.habitat && pokemon.habitat === this.selectedHabitat;
-      });
+      filtered = filtered.filter(pokemon =>
+        pokemon.habitat && pokemon.habitat === this.selectedHabitat
+      );
     }
 
     this.filteredPokemons = filtered;
@@ -103,9 +134,9 @@ export class PokemonListComponent implements OnInit {
   }
 
   selectPokemon(pokemon: any): void {
-    const types = pokemon.types.map((type: any) => type.type.name).join(', ');
-    const habitat = pokemon.habitat.name; // Obter habitat
-
+    const types = pokemon.types.map((type: any) => type.type.name);
+    const habitat = pokemon.habitat || 'desconhecido';
+    console.log("=>", pokemon)
 
     const stats = pokemon.stats.map((stat: any) => ({
       name: stat.stat.name,
