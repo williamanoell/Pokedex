@@ -59,11 +59,11 @@
 
     <div class="pagination">
         <button [ngClass]="{'paginaAnterior': page != 1, 'blockButton': page == 1}" (click)="changePage(page - 1)"
-            [disabled]="page === 1">Anterior</button>
+            [disabled]="page === 1">Previous</button>
         <div class="text">
-            <span>Página {{ totalPages > 0 ? page : 0}} de {{ totalPages }}</span>
+            <span>Page {{ totalPages > 0 ? page : 0}} of {{ totalPages }}</span>
         </div>
         <button [ngClass]="{'proximaPagina': page != totalPages, 'blockButton': page == totalPages}"
-            (click)="changePage(page + 1)" [disabled]="page === totalPages">Próximo</button>
+            (click)="changePage(page + 1)" [disabled]="page === totalPages">Next</button>
     </div>
 </div>
