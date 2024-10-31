@@ -45,6 +45,8 @@ export class PokemonListComponent implements OnInit {
     fairy: '#EE99AC',
   };
 
+  title: string = "https://camo.githubusercontent.com/cd58fcd6ccf163e749e63d8310f506fbe920978c73600a5f47619ede74ce12f2/68747470733a2f2f696b2e696d6167656b69742e696f2f6877796b73766a3469762f706f6b656465785f4e5f576757724a4b30732e706e67";
+
   constructor(
     private pokemonService: PokemonService,
     private dialog: MatDialog,
