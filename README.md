@@ -25,3 +25,15 @@ Para rodar o projeto localmente:
 1. Clone o repositório:
    ```bash
    git clone https://github.com/seu-usuario/nome-do-repositorio.git
+2. Navegue para a pasta do projeto:
+   ```bash
+   cd Pokedex
+3. Instale as dependências:
+  ```bash
+  npm install
+4. Execute o projeto:
+  ```bash
+  ng serve
+
+5. Acesse o projeto em:
+  https://williamanoell.github.io/Pokedex/
