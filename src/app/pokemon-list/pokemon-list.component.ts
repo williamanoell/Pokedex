@@ -179,7 +179,7 @@ export class PokemonListComponent implements OnInit {
       data: {
         pokemon: pokemon,
         types: types,
-        habitat: habitat,
+        habitat: this.getHabitatTranslation(habitat),
         stats: stats
       }
     });

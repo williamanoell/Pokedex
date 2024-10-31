@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'pokemon-detail',
@@ -28,8 +29,12 @@ export class PokemonDetailComponent {
     fairy: '#EE99AC',
   };
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any,
-    private dialogRef: MatDialogRef<PokemonDetailComponent>) { }
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private dialogRef: MatDialogRef<PokemonDetailComponent>,
+    private translate: TranslateService) {
+    this.translate.setDefaultLang('pt');
+  }
 
 
   getTypeIcon(type: string): string {
@@ -38,6 +43,14 @@ export class PokemonDetailComponent {
 
   getTypeColor(type: string): string {
     return this.typeColors[type] || '#c9c7c7';
+  }
+
+  getTypeTranslation(type: string): string {
+    var translatedTypes = '';
+    this.translate.get(`types.${type}`).subscribe((translation) => {
+      translatedTypes = translation;
+    });
+    return translatedTypes || type;
   }
 
   closeModal(): void {

@@ -5,7 +5,7 @@
         <span *ngFor="let type of data.types" class="type-label"
             [ngStyle]="{'background-color': getTypeColor(type), 'color': '#fff'}">
             <img [src]="getTypeIcon(type)" alt="{{ type }}" class="type-icon" />
-            {{ type | titlecase}}
+            {{ getTypeTranslation(type) }}
         </span>
     </p>
     <p>Habitat: {{ data.habitat | titlecase }}</p>
