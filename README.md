@@ -31,9 +31,10 @@ Para rodar o projeto localmente:
 3. Instale as dependências:
   ```bash
   npm install
+```
 4. Execute o projeto:
   ```bash
   ng serve
-
+````
 5. Acesse o projeto em:
   https://williamanoell.github.io/Pokedex/
