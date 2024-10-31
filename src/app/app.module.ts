@@ -16,7 +16,7 @@ import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.componen
 import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
-    return new TranslateHttpLoader(http);
+    return new TranslateHttpLoader(http, '/Pokedex/assets/i18n/', '.json');
 }
 
 @NgModule({
