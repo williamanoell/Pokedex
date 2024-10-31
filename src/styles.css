@@ -17,3 +17,11 @@ body {
 .loading-container {
     min-height: 60vh !important;
 }
+
+@font-face {
+    font-family: 'Pokemon Solid';
+    src: url('assets/fonts/PokemonSolid.ttf') format('truetype');
+    /* Ajuste o nome do arquivo conforme necessário */
+    font-weight: normal;
+    font-style: normal;
+}
