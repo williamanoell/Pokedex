@@ -9924,9 +9924,8 @@ body {
 }
 
 @font-face {
-    font-family: 'Pokemon Solid';
-    src: url('assets/fonts/PokemonSolid.ttf') format('truetype');
-    /* Ajuste o nome do arquivo conforme necessário */
-    font-weight: normal;
-    font-style: normal;
+    font-family: Pokemon Solid;
+    src: url("./media/PokemonSolid-Y5XCDFBU.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal
 }
