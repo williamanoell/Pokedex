@@ -32,7 +32,7 @@
               "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
               "src/custom-theme.scss",
               "src/styles.css",
-              "docs/browser/styles-4F6LCL5J.css"
+              "docs/browser/styles-C45OQSIJ.css"
             ],
             "scripts": []
           },
@@ -92,7 +92,7 @@
             ],
             "styles": [
               "src/styles.css",
-              "docs/browser/styles-4F6LCL5J.css"
+              "docs/browser/styles-C45OQSIJ.css"
             ],
             "scripts": []
           }

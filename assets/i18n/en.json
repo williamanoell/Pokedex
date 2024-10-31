@@ -1,0 +1,42 @@
+{
+    "types": {
+        "normal": "Normal",
+        "fire": "Fire",
+        "water": "Water",
+        "grass": "Grass",
+        "electric": "Electric",
+        "ice": "Ice",
+        "fighting": "Fighting",
+        "poison": "Poison",
+        "ground": "Ground",
+        "flying": "Flying",
+        "psychic": "Psychic",
+        "bug": "Bug",
+        "rock": "Rock",
+        "ghost": "Ghost",
+        "dragon": "Dragon",
+        "dark": "Dark",
+        "steel": "Steel",
+        "fairy": "Fairy"
+    },
+    "habitats": {
+        "cave": "Cave",
+        "forest": "Forest",
+        "grassland": "Grassland",
+        "mountain": "Mountain",
+        "rare": "Rare",
+        "rough": "Rough",
+        "sea": "Sea",
+        "urban": "Urban",
+        "watery": "Watery",
+        "unknown": "Unknown"
+    },
+    "stats": {
+        "hp": "HP",
+        "attack": "Attack",
+        "defense": "Defense",
+        "special-attack": "Special Attack",
+        "special-defense": "Special Defense",
+        "speed": "Speed"
+    }
+}
