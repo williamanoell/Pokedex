@@ -135,6 +135,16 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 --------------------------------------------------------------------------------
+Package: @ngx-translate/core
+License: "SEE LICENSE IN LICENSE"
+
+
+--------------------------------------------------------------------------------
+Package: @ngx-translate/http-loader
+License: "SEE LICENSE IN LICENSE"
+
+
+--------------------------------------------------------------------------------
 Package: @angular/core
 License: "MIT"
 
