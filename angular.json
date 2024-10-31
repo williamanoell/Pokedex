@@ -31,7 +31,8 @@
             "styles": [
               "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
               "src/custom-theme.scss",
-              "src/styles.css"
+              "src/styles.css",
+              "docs/browser/styles-4F6LCL5J.css"
             ],
             "scripts": []
           },
@@ -90,7 +91,8 @@
               }
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "docs/browser/styles-4F6LCL5J.css"
             ],
             "scripts": []
           }
