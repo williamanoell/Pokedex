@@ -170,7 +170,6 @@ export class PokemonListComponent implements OnInit {
   selectPokemon(pokemon: any): void {
     const types = pokemon.types.map((type: any) => type.type.name);
     const habitat = pokemon.habitat || 'desconhecido';
-    console.log("=>", pokemon)
 
     const stats = pokemon.stats.map((stat: any) => ({
       name: this.translateStat(stat.stat.name),
